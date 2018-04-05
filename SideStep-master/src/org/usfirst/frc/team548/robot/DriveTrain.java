@@ -5,7 +5,6 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.SendableBase;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class DriveTrain implements PIDOutput {
@@ -185,7 +184,26 @@ public class DriveTrain implements PIDOutput {
 				+ Math.abs(bigGiraffe.getError()) + Math.abs(bigSushi
 				.getError())) / 4d;
 	}
-
+	
+	public static int getBigBirdEncPos(){
+		return bigBird.getEncPos();
+	}
+	
+	public static int getBigSushiEncPos(){
+		return bigSushi.getEncPos();
+	}
+	
+	public static int getBigHorseEncPos(){
+		return bigHorse.getEncPos();
+	}
+	
+	public static int getBigGiraffeEncPos(){
+		return bigHorse.getEncPos();
+	}
+	
+	public static int getBigBirdRotations(){
+		return bigBird.getTurnRotations();
+	}
 	/*
 	 * 
 	 * Drive methods

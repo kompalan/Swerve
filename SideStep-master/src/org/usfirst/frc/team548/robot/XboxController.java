@@ -19,66 +19,82 @@ public class XboxController extends Joystick{
 	
 	public double getLeftStickXAxis() {
 		return getRawAxis(0);
+		//return this.getLeftStickXAxis();
 	}
 	
 	public double getLeftStickYAxis() {
 		return -getRawAxis(1);
+		//return this.getLeftStickYAxis();
 	}
 	
 	public double getRightTriggerAxis() {
 		return getRawAxis(3);
+		//return this.getRightTriggerAxis();
 	}
 	
 	public double getLeftTriggerAxis() {
 		return getRawAxis(2);
+		//return this.getLeftTriggerAxis();
 	}
 	
 	public double getRightStickXAxis() {
 		return getRawAxis(4);
+		//return this.getRightStickXAxis();
 	}
 	
 	public double getRightStickYAxis() {
 		return -getRawAxis(5);
+		//return this.getRightStickYAxis();
 	}
 
 	public boolean getAButton() {
 		return getRawButton(1);
+		//return this.getAButton();
 	}
 
 	public boolean getBButton() {
 		return getRawButton(2);
+		//return this.getBButton();
 	}
 
 	public boolean getXButton() {
 		return getRawButton(3);
+		//return this.getXButton();
 	}
 
 	public boolean getYButton() {
 		return getRawButton(4);
+		//return this.getYButton();
 	}
 
 	public boolean getLeftBumper() {
 		return getRawButton(5);
+		//return this.getLeftBumper();
 	}
 
 	public boolean getRightBumper() {
 		return getRawButton(6);
+		//return this.getRightBumper();
 	}
 
 	public boolean getBackButton() {
 		return getRawButton(7);
+		//return this.getRightBumper();
 	}
 
 	public boolean getStartButton() {
 		return getRawButton(8);
+		//return this.getStartButton();
 	}
 	
 	public boolean getLeftJoystickButton() {
 		return getRawButton(9);
+		//return this.getLeftJoystickButton();
 	}
 	
 	public boolean getRightJoystickButton() {
 		return getRawButton(10);
+		//return this.getRightJoystickButton();
 	}
 	
 	public boolean getRightTriggerButton() {
@@ -93,13 +109,13 @@ public class XboxController extends Joystick{
 		if(getLeftTriggerAxis() > 0.5) {
 			return true;
 		} else {
-			
 			return false;
 		}
 	}
 	
 	public int getDPad() {
 		return getPOV();
+		//return this.getPOV();
 	}
 	
 	public boolean isDPadTopHalf() {
@@ -123,7 +139,8 @@ public class XboxController extends Joystick{
 	}
 	
 	public double getTriggers() {
-		return (getRawAxis(3)-getRawAxis(2));
+		return (this.getRawAxis(3)-this.getRawAxis(2));
+		//return (this.getX()-this.getY());
 	}
 	
 }
