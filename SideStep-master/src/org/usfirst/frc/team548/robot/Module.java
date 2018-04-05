@@ -3,6 +3,7 @@ package org.usfirst.frc.team548.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class Module {
@@ -22,17 +23,18 @@ public class Module {
 	public Module(int driveTalonID, int turnTalonID, double tP, double tI, double tD, int tIZone) {
 		drive = new TalonSRX(driveTalonID);
 		turn = new TalonSRX(turnTalonID);
-		turn.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		turn.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		
 		this.TURN_P = tP;
 		this.TURN_I = tI;
 		this.TURN_D = tD;
 		this.TURN_IZONE = tIZone;
 		
-		turn.config_kP(turnTalonID, tP, 10);
-		turn.config_kI(turnTalonID, tI, 10);
-		turn.config_kD(turnTalonID, tD, 10);
-		turn.config_IntegralZone(turnTalonID, tIZone, 10);
+		turn.config_kP(0, this.TURN_P, 0);
+		turn.config_kI(0, this.TURN_I, 0);
+		turn.config_kD(0, this.TURN_D, 0);
+		turn.config_IntegralZone(0, this.TURN_IZONE, 0);
+		turn.setInverted(true);
 		//turn.config_IntegralZone((int) TURN_P, (int) TURN_I, (int) TURN_D);
 	}
 	
@@ -162,8 +164,10 @@ public class Module {
 	}
 	
 	public void setBreakMode(boolean b) {
-		//if(b){
-		//	drive.setNeutralMode(NeutralMode.Brake);
-		//}
+		if(b){
+			drive.setNeutralMode(NeutralMode.Brake);
+		}else{
+			drive.setNeutralMode(NeutralMode.Coast);
+		}
 	}	
 }
