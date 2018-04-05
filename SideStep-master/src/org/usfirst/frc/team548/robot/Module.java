@@ -5,7 +5,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-
 public class Module {
 	private TalonSRX drive, turn;
 	private final double FULL_ROTATION = 4096d, TURN_P, TURN_I, TURN_D;
@@ -24,10 +23,16 @@ public class Module {
 		drive = new TalonSRX(driveTalonID);
 		turn = new TalonSRX(turnTalonID);
 		turn.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		TURN_P = tP;
-		TURN_I = tI;
-		TURN_D = tD;
-		TURN_IZONE = tIZone;
+		
+		this.TURN_P = tP;
+		this.TURN_I = tI;
+		this.TURN_D = tD;
+		this.TURN_IZONE = tIZone;
+		
+		turn.config_kP(turnTalonID, tP, 10);
+		turn.config_kI(turnTalonID, tI, 10);
+		turn.config_kD(turnTalonID, tD, 10);
+		turn.config_IntegralZone(turnTalonID, tIZone, 10);
 		//turn.config_IntegralZone((int) TURN_P, (int) TURN_I, (int) TURN_D);
 	}
 	
@@ -78,6 +83,10 @@ public class Module {
 	
 	public void setEncPos(int d) {
 		turn.getSensorCollection().setQuadraturePosition(d, 10);
+	}
+	
+	public int getEncPos(){
+		return turn.getSensorCollection().getQuadraturePosition();
 	}
 	/**
 	 * Is electrical good? Probably not.... Is the turn encoder connected?
@@ -153,11 +162,8 @@ public class Module {
 	}
 	
 	public void setBreakMode(boolean b) {
-//		if(b){
-//			drive.setNeutralMode(NeutralMode.Brake);
-//		}
-	}
-	
-	
-	
+		//if(b){
+		//	drive.setNeutralMode(NeutralMode.Brake);
+		//}
+	}	
 }
