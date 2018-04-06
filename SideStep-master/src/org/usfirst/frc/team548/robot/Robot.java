@@ -69,12 +69,11 @@ public class Robot extends IterativeRobot {
     	xbox.setRightRumble(Math.pow(DriveTrain.getAverageError()/1300d, 2));
     	xbox.setLeftRumble((RobotController.isBrownedOut() ? 1 : 0));
     	
-    	System.out.println("Big Bird Position" + DriveTrain.getBigBirdEncPos());
-    	System.out.println("Big Sushi Encoder Position" + DriveTrain.getBigSushiEncPos());
-    	System.out.println("Big Giraffe Encoder Position" + DriveTrain.getBigGiraffeEncPos());
-    	System.out.println("Big Horse Encoder Position" + DriveTrain.getBigHorseEncPos());
-    	
-    	System.out.println("Big Bird Rotations" + DriveTrain.getBigBirdRotations());
+    	//BB, BH, BG, BS
+    	SmartDashboard.putNumber("Big Bird Offset Position", DriveTrain.GLOBALbboff);
+    	SmartDashboard.putNumber("Big Horse Offset Position", DriveTrain.GLOBALbhoff);
+    	SmartDashboard.putNumber("Big Sushi Offset Position", DriveTrain.GLOBALbsoff);
+    	SmartDashboard.putNumber("Big Giraffe Offset Position", DriveTrain.GLOBALbgoff);
     	
     	//DriveTrain.setAllTurnPower(0.20);
     }
@@ -83,7 +82,8 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
     	//LiveWindow.addSensor("DriveSystem", "Hyro", (LiveWindowSendable) DriveTrain.getHyro());
     	//SmartDashboard.putData("HYRO", DriveTrain.getHyro());
-    	DriveTrain.setAllTurnPower(0.20);
+    	DriveTrain.setAllTurnPower(0.60);
+    	//DriveTrain.setAllDrivePower(0.20);
     }
     
     

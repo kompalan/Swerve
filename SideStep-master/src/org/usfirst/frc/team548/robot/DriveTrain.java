@@ -13,7 +13,8 @@ public class DriveTrain implements PIDOutput {
 	private static Module bigBird, bigHorse, bigGiraffe, bigSushi;
 	private static AHRS hyro;
 	private static PIDController pidControllerRot;
-
+	public static double GLOBALbboff, GLOBALbgoff, GLOBALbsoff, GLOBALbhoff;
+	
 	public static DriveTrain getInstance() {
 		if (instance == null)
 			instance = new DriveTrain();
@@ -57,7 +58,7 @@ public class DriveTrain implements PIDOutput {
 	public static void setTurnPower(double bbPower, double bhPower,
 			double bgPower, double bsPower) {
 		bigBird.setTurnPower(bbPower);
-		bigHorse.setTurnPower(bhPower);
+		bigHorse.setTurnPower(bhPower*3);
 		bigGiraffe.setTurnPower(bgPower);
 		bigSushi.setTurnPower(bsPower);
 	}
@@ -137,7 +138,11 @@ public class DriveTrain implements PIDOutput {
 			bhOff = DriveTrain.bigHorse.getAbsPos();
 			bgOff = DriveTrain.bigGiraffe.getAbsPos();
 			bsOff = DriveTrain.bigSushi.getAbsPos();
-
+			GLOBALbboff = bbOff;
+			GLOBALbhoff = bhOff;
+			GLOBALbgoff = bgOff;
+			GLOBALbsoff = bsOff;
+			
 			System.out.println("BBoff: " + bbOff);
 			System.out.println("BHoff: " + bhOff);
 			System.out.println("BGoff: " + bgOff);

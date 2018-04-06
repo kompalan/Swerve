@@ -34,7 +34,8 @@ public class Module {
 		turn.config_kI(0, this.TURN_I, 0);
 		turn.config_kD(0, this.TURN_D, 0);
 		turn.config_IntegralZone(0, this.TURN_IZONE, 0);
-		turn.setInverted(true);
+		//turn.setInverted(true);
+		turn.setInverted(false);
 		//turn.config_IntegralZone((int) TURN_P, (int) TURN_I, (int) TURN_D);
 	}
 	
@@ -152,6 +153,7 @@ public class Module {
 	
 	public double getError() {
 		return turn.getClosedLoopError(0);
+		//return 0.0;
 	}
 	
 	public void stopBoth() {
